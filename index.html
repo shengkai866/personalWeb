@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kai Sheng</title>
+  <meta name="description" content="Kai Sheng — M.S. CSE @ University of Michigan. Seeking Summer 2027 internships in SWE, AI agents, MLE and backend engineering." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2300274C'/><text x='50' y='68' font-size='52' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23FFCB05'>KS</text></svg>" />
+  <!-- 霞鹜文楷 LXGW WenKai: site-wide font (both languages); subsets load on demand -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css" />
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --surface: #ffffff;
+      --surface-2: #f3f1ea;
+      --text: #14181f;
+      --muted: #5b6270;
+      --line: #e4e1d8;
+      --accent: #00274c;      /* Michigan blue */
+      --accent-soft: #e6ecf3;
+      --maize: #ffcb05;       /* Michigan maize */
+      --maize-ink: #6b5300;
+      --shadow: 0 1px 2px rgba(20, 24, 31, .04), 0 8px 24px rgba(20, 24, 31, .06);
+      --radius: 14px;
+      --font: "LXGW WenKai", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "LXGW WenKai", monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --surface: #151b24;
+        --surface-2: #1b2330;
+        --text: #e8eaee;
+        --muted: #9aa3b2;
+        --line: #263042;
+        --accent: #8db8ff;
+        --accent-soft: #1a2638;
+        --maize-ink: #ffd84d;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+      }
+      .btn.primary { background: var(--maize) !important; border-color: var(--maize) !important; color: #00274c !important; }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16.5px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- Nav ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: saturate(160%) blur(10px);
+      -webkit-backdrop-filter: saturate(160%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+    .brand { font-weight: 700; color: var(--text); }
+    .brand:hover { text-decoration: none; }
+    .nav-links { display: flex; gap: 22px; align-items: center; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 14.5px; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .lang-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--line); background: var(--surface); color: var(--text);
+      font: 600 13px/1 var(--font); padding: 8px 12px; border-radius: 999px; cursor: pointer;
+      transition: border-color .15s, transform .15s;
+    }
+    .lang-btn:hover { border-color: var(--accent); }
+    .lang-btn:active { transform: scale(.97); }
+    .lang-btn .opt { opacity: .45; }
+    .lang-btn .opt.on { opacity: 1; }
+    .lang-btn .sep { opacity: .3; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 72px 0 56px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: center; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: color-mix(in srgb, var(--maize) 22%, var(--surface));
+      color: var(--maize-ink);
+      border: 1px solid color-mix(in srgb, var(--maize) 55%, transparent);
+      padding: 6px 12px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+    }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #1fa65a; box-shadow: 0 0 0 0 rgba(31,166,90,.6); animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(31,166,90,.55); } 70% { box-shadow: 0 0 0 8px rgba(31,166,90,0); } 100% { box-shadow: 0 0 0 0 rgba(31,166,90,0); } }
+    .hero h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.08; margin: 20px 0 16px; }
+    .hero h1 .alt { color: var(--muted); font-weight: 500; font-size: .5em; letter-spacing: 0; margin-left: 10px; }
+    .hero .tagline { font-size: 18.5px; color: var(--muted); max-width: 34em; }
+    .hero .tagline strong { color: var(--text); font-weight: 600; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: 15px;
+      border: 1px solid var(--line); background: var(--surface); color: var(--text);
+      transition: transform .15s, border-color .15s, background .15s;
+    }
+    .btn:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-1px); }
+    .btn.primary { background: #00274c; border-color: #00274c; color: #fff; }
+    .btn.primary:hover { background: #0a3a6b; }
+    .btn svg { width: 17px; height: 17px; flex: none; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 22px; color: var(--muted); font-size: 14px; }
+    .meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .meta svg { width: 15px; height: 15px; }
+
+    .photo {
+      position: relative; justify-self: end; width: 100%; max-width: 360px;
+    }
+    .photo::before {
+      content: ""; position: absolute; inset: 18px -18px -18px 18px;
+      border-radius: 22px; background: var(--maize); z-index: 0;
+    }
+    .photo .frame {
+      position: relative; z-index: 1; overflow: hidden;
+      aspect-ratio: 4 / 5; border-radius: 22px; box-shadow: var(--shadow);
+    }
+    .photo img {
+      display: block; width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.45); transform-origin: 48% 38%;
+    }
+
+    /* ---------- Stats ---------- */
+    .stats-wrap { max-width: 1040px; margin: 56px auto 0; padding: 0 24px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .stat {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 18px 18px 16px;
+    }
+    .stat .num { font-size: 22px; white-space: nowrap; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .stat .label { font-size: 13.5px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+
+    /* ---------- Sections ---------- */
+    section.block { padding: 64px 0 8px; }
+    .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; }
+    .section-head .idx { font-family: var(--mono); color: var(--muted); font-size: 13px; }
+    .section-head h2 { font-size: 26px; }
+    .section-head .rule { flex: 1; height: 1px; background: var(--line); }
+    .about p { font-size: 17px; max-width: 46em; color: var(--text); }
+    .about p + p { margin-top: 14px; }
+    .about .muted { color: var(--muted); }
+
+    /* Experience */
+    .xp { display: grid; gap: 18px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 24px 26px; box-shadow: var(--shadow);
+    }
+    .xp-top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .xp-org { font-size: 19px; font-weight: 700; }
+    .xp-org a { color: inherit; }
+    .xp-role { color: var(--muted); font-size: 15px; margin-top: 2px; }
+    .xp-when { text-align: right; font-size: 14px; color: var(--muted); white-space: nowrap; }
+    .xp-when .date { font-family: var(--mono); font-size: 13px; color: var(--text); }
+    .bullets { margin-top: 16px; display: grid; gap: 10px; list-style: none; }
+    .bullets li { position: relative; padding-left: 18px; font-size: 15px; color: var(--text); }
+    .bullets li::before {
+      content: ""; position: absolute; left: 2px; top: .7em; width: 6px; height: 6px; border-radius: 2px;
+      background: var(--maize);
+    }
+    .bullets li b { font-weight: 650; }
+    .site-link {
+      display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;
+      font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+      border: 1px solid var(--line); color: var(--accent); background: var(--surface-2);
+    }
+    .site-link:hover { border-color: var(--accent); text-decoration: none; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .tag {
+      font-size: 12.5px; font-family: var(--mono); padding: 3px 9px; border-radius: 6px;
+      background: var(--accent-soft); color: var(--accent);
+    }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .proj h3 { font-size: 18px; }
+    .proj .sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
+    .proj p { font-size: 15px; margin-top: 12px; }
+    .proj .metrics { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .proj .metric { background: var(--surface-2); border-radius: 8px; padding: 8px 12px; font-size: 13px; color: var(--muted); }
+    .proj.wide { grid-column: 1 / -1; }
+    .proj .bullets { margin-top: 14px; }
+    .subhead { font-size: 16px; color: var(--muted); font-weight: 600; margin: 34px 0 14px; }
+    .projects.more { grid-template-columns: repeat(2, 1fr); }
+    .proj.mini { padding: 20px 22px; box-shadow: none; }
+    .proj.mini h3 { font-size: 16.5px; }
+    .proj.mini p { font-size: 14.5px; margin-top: 10px; }
+    .proj .hl { color: var(--accent); font-weight: 600; }
+    .proj .metric b { display: block; color: var(--text); font-size: 16px; font-variant-numeric: tabular-nums; }
+
+    /* Education */
+    .edu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .edu .deg { font-weight: 650; font-size: 16.5px; }
+    .edu .school { color: var(--muted); font-size: 14.5px; margin-top: 2px; }
+    .edu .row { display: flex; justify-content: space-between; gap: 10px; margin-top: 14px; font-size: 13.5px; color: var(--muted); }
+    .edu .row .date { font-family: var(--mono); color: var(--text); font-size: 13px; }
+
+    /* Skills */
+    .skills { display: grid; gap: 14px; }
+    .skill-row { display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: start; padding-bottom: 14px; border-bottom: 1px dashed var(--line); }
+    .skill-row:last-child { border-bottom: 0; }
+    .skill-row .k { font-weight: 650; font-size: 14.5px; padding-top: 3px; }
+    .skill-row .tags { margin-top: 0; }
+
+    /* Beyond code */
+    .hobby { display: flex; gap: 20px; align-items: flex-start; }
+    .hobby-icon {
+      flex: none; width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+      background: color-mix(in srgb, var(--maize) 22%, var(--surface)); color: var(--maize-ink);
+    }
+    .hobby-icon svg { width: 30px; height: 30px; }
+    .hobby h3 { font-size: 18px; }
+    .hobby p { font-size: 15px; margin-top: 6px; max-width: 46em; }
+    .hobby-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .hobby-badge {
+      font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent);
+    }
+
+    /* Contact */
+    .contact { text-align: center; padding: 48px 26px; }
+    .contact h3 { font-size: 24px; }
+    .contact p { color: var(--muted); max-width: 34em; margin: 10px auto 0; }
+    .contact .cta { justify-content: center; }
+
+    footer { padding: 40px 0 48px; color: var(--muted); font-size: 13.5px; text-align: center; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .badge .dot { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .hero { padding: 44px 0 36px; }
+      .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+      .photo { justify-self: center; max-width: 300px; order: -1; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stats-wrap { margin-top: 36px; }
+      .projects, .projects.more, .edu { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .stats-wrap { padding: 0 16px; }
+      .stat .num { font-size: 19px; white-space: normal; }
+      .nav-links li.hide-sm { display: none; }
+      .card { padding: 20px 18px; }
+      .xp-when { text-align: left; }
+      .skill-row { grid-template-columns: 1fr; gap: 8px; }
+      .photo::before { inset: 12px -12px -12px 12px; }
+      .photo { max-width: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" data-i18n="brand">Kai Sheng</a>
+      <ul class="nav-links">
+        <li class="hide-sm"><a href="#about" data-i18n="nav.about">About</a></li>
+        <li class="hide-sm"><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li class="hide-sm"><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li class="hide-sm"><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li class="hide-sm"><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li>
+          <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language / 切换语言">
+            <span class="opt" data-lang="en">EN</span><span class="sep">/</span><span class="opt" data-lang="zh">中文</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="badge"><span class="dot"></span><span data-i18n="hero.badge"></span></span>
+          <h1><span data-i18n="hero.hello"></span><span class="alt" data-i18n="hero.altName"></span></h1>
+          <p class="tagline" data-i18n-html="hero.tagline"></p>
+          <div class="cta">
+            <a class="btn primary" id="resumeBtn" href="assets/Kai_Sheng_Resume_EN.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
+              <span data-i18n="cta.resume"></span>
+            </a>
+            <a class="btn" href="mailto:shengkai866@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              <span data-i18n="cta.email"></span>
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/kai-sheng-044a27254/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+          <div class="meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="hero.location"></span>
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <span data-i18n="hero.school"></span>
+            </span>
+          </div>
+        </div>
+        <div class="photo">
+          <div class="frame"><img src="assets/photo.jpg" alt="Kai Sheng at Michigan Stadium commencement" data-i18n-alt="hero.photoAlt" /></div>
+        </div>
+      </div>
+      <div class="stats-wrap">
+        <div class="stats" id="stats"></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="block about" id="about">
+      <div class="wrap reveal">
+        <div class="section-head"><span class="idx">01</span><h2 data-i18n="nav.about"></h2><span class="rule"></span></div>
+        <div id="aboutBody"></div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="block" id="experience">
+      <div class="wrap reveal">
+        <div class="section-head"><span class="idx">02</span><h2 data-i18n="nav.experience"></h2><span class="rule"></span></div>
+        <div class="xp" id="xpList"></div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="block" id="projects">
+      <div class="wrap reveal">
+        <div class="section-head"><span class="idx">03</span><h2 data-i18n="nav.projects"></h2><span class="rule"></span></div>
+        <div class="projects" id="projList"></div>
+        <h3 class="subhead" id="moreProjTitle"></h3>
+        <div class="projects more" id="moreProjList"></div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="block" id="education">
+      <div class="wrap reveal">
+        <div class="section-head"><span class="idx">04</span><h2 data-i18n="nav.education"></h2><span class="rule"></span></div>
+        <div class="edu" id="eduList"></div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="block" id="skills">
+      <div class="wrap reveal">
+        <div class="section-head"><span class="idx">05</span><h2 data-i18n="nav.skills"></h2><span class="rule"></span></div>
+        <div class="card skills" id="skillList"></div>
+      </div>
+    </section>
+
+    <!-- Beyond code -->
+    <section class="block" id="beyond">
+      <div class="wrap reveal">
+        <div class="section-head"><span class="idx">06</span><h2 data-i18n="nav.beyond"></h2><span class="rule"></span></div>
+        <div id="hobbyList"></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="block" id="contact">
+      <div class="wrap reveal">
+        <div class="card contact">
+          <h3 data-i18n="contact.title"></h3>
+          <p data-i18n="contact.body"></p>
+          <div class="cta">
+            <a class="btn primary" href="mailto:shengkai866@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              shengkai866@gmail.com
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/kai-sheng-044a27254/" target="_blank" rel="noopener">linkedin.com/in/kai-sheng-044a27254</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> <span data-i18n="brand"></span> · <span data-i18n="footer"></span></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
