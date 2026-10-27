@@ -37,7 +37,7 @@ const content = {
     ],
     about: [
       "I'm a Master's student in Computer Science & Engineering at the University of Michigan (expected Dec 2027), where I also earned my B.S. in Computer Science.",
-      "My work sits where large language models meet production systems. At <b>Meituan</b> I built an enterprise-IM agent that automates the data-development pipeline end-to-end — from a PM's vague idea to reviewed ETL code. At <b>UMich</b> I engineer the retrieval, graph and serving stack behind <a href=\"https://glkb.org/\" target=\"_blank\" rel=\"noopener\">GLKB</a>, a biomedical knowledge graph built from 33M PubMed articles. On the research side, I've been exploring <b>cross-modal KV-cache transfer</b> — letting a text-only LLM answer questions about documents it never sees.",
+      "My work sits where large language models meet production systems. At <b>Meituan</b> I built an enterprise-IM agent that automates the data-development pipeline end-to-end — from a PM's vague idea to reviewed ETL code. At <b>UMich</b> I engineer the retrieval, graph and serving stack behind <a href=\"https://glkb.org/\" target=\"_blank\" rel=\"noopener\">GLKB</a>, a biomedical knowledge graph built from 33M PubMed articles. On the research side, I've been exploring <b>cross-modal KV-cache transfer</b> — letting a text-only LLM answer questions about documents it never sees — and, more recently, <b>small-to-large model prefill</b>, where a 0.6B model does most of the prompt processing for a frozen 8B model, making its first token ~2× faster.",
       "<span class=\"muted\">I'm currently looking for a <b>Summer 2027 internship</b> in <b>software engineering</b>, <b>AI agents</b>, <b>machine learning engineering</b>, or <b>backend</b> development. Feel free to reach out!</span>",
     ],
     experience: [
@@ -85,6 +85,24 @@ const content = {
       },
     ],
     projects: [
+      {
+        title: "Small-to-Large Model Prefill",
+        sub: "Research project · Oct 2026 – Present",
+        wide: true,
+        desc: "Long prompts make an LLM slow to produce its first token. This project lets a small model do most of the prefill: Qwen3-0.6B reads the prompt, and a trained projector turns its hidden states into the KV cache of a frozen Qwen3-8B.",
+        bullets: [
+          "<b>Residual-stream projection.</b> An ~86M-param projector predicts the residual stream of every 8B layer; the 8B's own layer norms, k/v projections and RoPE then turn it into a KV cache that stays in the 8B's distribution. Only the first and last few tokens are computed by the 8B itself.",
+          "<b>Selective recompute.</b> The small model's attention to the question picks the top 10% of sentences, which the 8B recomputes in place within the same forward call — lifting RULER at 8k from 0.64 to 0.85 (8B alone: 0.92).",
+          "<b>Two-stage distillation.</b> Both LLMs stay frozen; only the projector is trained, first by residual-stream alignment, then by end-to-end KL distillation on 8B self-generated responses. A mixed data pool (QA, code, chat, math, synthetic retrieval) raised doc-QA F1 from 0.19 to 0.69.",
+          "<b>Evaluation.</b> ~2× faster time-to-first-token at 4k–8k while keeping ~92% of the 8B's RULER score and matching it on GSM8K (0.92 vs 0.91). Benchmarked against a reimplemented SpecPrefill (ICML 2025); versus simply dropping unselected tokens, QA fabrication fell from 13.7% to 5.3%.",
+        ],
+        metrics: [
+          { v: "~2×", k: "faster time-to-first-token" },
+          { v: "~92%", k: "of the 8B's RULER score" },
+          { v: "0.92", k: "GSM8K, on par with 8B" },
+        ],
+        tags: ["PyTorch", "Hugging Face", "Qwen3-0.6B → 8B", "KV Cache", "Distillation", "RULER", "SLURM"],
+      },
       {
         title: "Multimodal KV-Cache Transfer",
         sub: "Research Assistant, University of Michigan · Jan – Jun 2026",
@@ -170,7 +188,7 @@ const content = {
       },
     ],
     skills: [
-      { k: "Languages", v: ["Python", "SQL", "JavaScript", "Java", "C++", "R", "HTML/CSS"] },
+      { k: "Languages", v: ["Python", "SQL", "JavaScript", "Java", "Go", "C++", "R", "HTML/CSS"] },
       { k: "AI / ML", v: ["LangChain", "LangGraph", "Hugging Face Transformers", "PyTorch", "scikit-learn", "Pandas", "NumPy"] },
       { k: "Frameworks", v: ["Flask", "FastAPI", "Spring MVC", "React", "Vue", "Spark", "Hadoop"] },
       { k: "Databases", v: ["Neo4j", "PostgreSQL", "MySQL", "MongoDB", "Hive", "Oracle"] },
@@ -223,7 +241,7 @@ const content = {
     ],
     about: [
       "我目前在密歇根大学安娜堡分校攻读计算机科学与工程硕士（预计 2027 年 12 月毕业），本科同样毕业于密歇根大学计算机科学专业。",
-      "我的工作聚焦在大语言模型与生产系统的结合点。在<b>美团</b>，我打造了一个企业级 IM 智能体，把数据开发全流程自动化——从 PM 的一个模糊想法，一直到可评审的 ETL 代码。在<b>密歇根大学</b>，我负责 <a href=\"https://glkb.org/\" target=\"_blank\" rel=\"noopener\">GLKB</a> 背后的检索、图数据库与服务部署，这是一个基于 3300 万篇 PubMed 文献构建的生物医学知识图谱。在研究方面，我在探索<b>跨模态 KV-Cache 传递</b>——让纯文本大模型无需“看到”文档图片，也能回答关于文档的问题。",
+      "我的工作聚焦在大语言模型与生产系统的结合点。在<b>美团</b>，我打造了一个企业级 IM 智能体，把数据开发全流程自动化——从 PM 的一个模糊想法，一直到可评审的 ETL 代码。在<b>密歇根大学</b>，我负责 <a href=\"https://glkb.org/\" target=\"_blank\" rel=\"noopener\">GLKB</a> 背后的检索、图数据库与服务部署，这是一个基于 3300 万篇 PubMed 文献构建的生物医学知识图谱。在研究方面，我在探索<b>跨模态 KV-Cache 传递</b>——让纯文本大模型无需“看到”文档图片，也能回答关于文档的问题；最近在做<b>小模型 Prefill 加速大模型推理</b>——由 0.6B 小模型完成大部分 prompt 处理，让冻结的 8B 大模型首 token 延迟加速约 2 倍。",
       "<span class=\"muted\">我正在寻找 <b>2027 年暑期实习</b>，方向包括<b>软件开发（SWE）</b>、<b>AI Agent</b>、<b>机器学习工程（MLE）</b>与<b>后端开发</b>，欢迎联系我！</span>",
     ],
     experience: [
@@ -271,6 +289,24 @@ const content = {
       },
     ],
     projects: [
+      {
+        title: "小模型 Prefill 加速大模型推理",
+        sub: "研究项目 · 2026.10 – 至今",
+        wide: true,
+        desc: "长 prompt 会让大模型输出第一个 token 很慢。这个项目让小模型完成大部分 prefill：由 Qwen3-0.6B 读取 prompt，再用训练好的 projector 把它的隐藏状态转换成冻结的 Qwen3-8B 的 KV Cache。",
+        bullets: [
+          "<b>预测 residual stream。</b>约 8600 万参数的 projector 预测 8B 每一层的 residual stream，再由 8B 自身的归一化层、k/v 投影和 RoPE 计算出 KV Cache，使其落在 8B 的分布内。只有开头和结尾少量 token 由 8B 自己计算。",
+          "<b>选择性重算。</b>根据小模型对问题的注意力选出得分最高的 10% 句子，由 8B 在原位置、同一次前向中重算，8k 长度下 RULER 从 0.64 提升至 0.85（8B 单独为 0.92）。",
+          "<b>两阶段蒸馏。</b>冻结大小模型，只训练 projector：先做 residual stream 对齐，再在 8B 自生成的回复上做端到端 KL 蒸馏。混合训练数据（问答、代码、对话、数学、合成检索）使文档问答 F1 从 0.19 提升至 0.69。",
+          "<b>评测结果。</b>4k–8k 下首 token 延迟加速约 2 倍，RULER 保持 8B 的约 92%，GSM8K 与 8B 持平（0.92 对 0.91）。复现 SpecPrefill（ICML 2025）作为对比；与直接丢弃未选中 token 相比，问答编造率从 13.7% 降至 5.3%。",
+        ],
+        metrics: [
+          { v: "约 2 倍", k: "首 token 延迟加速" },
+          { v: "约 92%", k: "保持 8B 的 RULER 分数" },
+          { v: "0.92", k: "GSM8K，与 8B 持平" },
+        ],
+        tags: ["PyTorch", "Hugging Face", "Qwen3-0.6B → 8B", "KV Cache", "知识蒸馏", "RULER", "SLURM"],
+      },
       {
         title: "Multimodal KV-Cache Transfer",
         sub: "密歇根大学 科研助理 · 2026.01 – 2026.06",
@@ -356,7 +392,7 @@ const content = {
       },
     ],
     skills: [
-      { k: "编程语言", v: ["Python", "SQL", "JavaScript", "Java", "C++", "R", "HTML/CSS"] },
+      { k: "编程语言", v: ["Python", "SQL", "JavaScript", "Java", "Go", "C++", "R", "HTML/CSS"] },
       { k: "AI / 机器学习", v: ["LangChain", "LangGraph", "Hugging Face Transformers", "PyTorch", "scikit-learn", "Pandas", "NumPy"] },
       { k: "框架", v: ["Flask", "FastAPI", "Spring MVC", "React", "Vue", "Spark", "Hadoop"] },
       { k: "数据库", v: ["Neo4j", "PostgreSQL", "MySQL", "MongoDB", "Hive", "Oracle"] },
