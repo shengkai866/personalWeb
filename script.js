@@ -36,7 +36,7 @@ const content = {
       { num: "~12% → ~6%", label: "Out-of-spec agent changes after adding human-in-the-loop gates" },
     ],
     about: [
-      "I'm a Master's student in Computer Science & Engineering at the University of Michigan (expected Dec 2027), where I also earned my B.S. in Computer Science.",
+      "I'm a Master's student in Computer Science & Engineering at the University of Michigan (expected Dec 2027), where I also earned my B.S. in Computer Science. I'm advised by Dr. Jie Liu.",
       "My work sits where large language models meet production systems. At <b>Meituan</b> I built an enterprise-IM agent that automates the data-development pipeline end-to-end — from a PM's vague idea to reviewed ETL code. At <b>UMich</b> I engineer the retrieval, graph and serving stack behind <a href=\"https://glkb.org/\" target=\"_blank\" rel=\"noopener\">GLKB</a>, a biomedical knowledge graph built from 33M PubMed articles. On the research side, I've been exploring <b>cross-modal KV-cache transfer</b> — letting a text-only LLM answer questions about documents it never sees — and, more recently, <b>small-to-large model prefill</b>, where a 0.6B model does most of the prompt processing for a frozen 8B model, making its first token ~2× faster.",
       "<span class=\"muted\">I'm currently looking for a <b>Summer 2027 internship</b> in <b>software engineering</b>, <b>AI agents</b>, <b>machine learning engineering</b>, or <b>backend</b> development. Feel free to reach out!</span>",
     ],
@@ -240,7 +240,7 @@ const content = {
       { num: "约 12% → 约 6%", label: "引入人机协同校验门后智能体越权改动比例" },
     ],
     about: [
-      "我目前在密歇根大学安娜堡分校攻读计算机科学与工程硕士（预计 2027 年 12 月毕业），本科同样毕业于密歇根大学计算机科学专业。",
+      "我目前在密歇根大学安娜堡分校攻读计算机科学与工程硕士（预计 2027 年 12 月毕业），本科同样毕业于密歇根大学计算机科学专业。我的导师是 Jie Liu 教授。",
       "我的工作聚焦在大语言模型与生产系统的结合点。在<b>美团</b>，我打造了一个企业级 IM 智能体，把数据开发全流程自动化——从 PM 的一个模糊想法，一直到可评审的 ETL 代码。在<b>密歇根大学</b>，我负责 <a href=\"https://glkb.org/\" target=\"_blank\" rel=\"noopener\">GLKB</a> 背后的检索、图数据库与服务部署，这是一个基于 3300 万篇 PubMed 文献构建的生物医学知识图谱。在研究方面，我在探索<b>跨模态 KV-Cache 传递</b>——让纯文本大模型无需“看到”文档图片，也能回答关于文档的问题；最近在做<b>小模型 Prefill 加速大模型推理</b>——由 0.6B 小模型完成大部分 prompt 处理，让冻结的 8B 大模型首 token 延迟加速约 2 倍。",
       "<span class=\"muted\">我正在寻找 <b>2027 年暑期实习</b>，方向包括<b>软件开发（SWE）</b>、<b>AI Agent</b>、<b>机器学习工程（MLE）</b>与<b>后端开发</b>，欢迎联系我！</span>",
     ],
